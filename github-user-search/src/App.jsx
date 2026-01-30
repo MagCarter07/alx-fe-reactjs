@@ -1,9 +1,9 @@
-import SearchPlaceholder from "./components/SearchPlaceholder";
+import Search from "./components/Search";
 
 function App() {
   return (
     <div>
-      <SearchPlaceholder />
+      <Search />
     </div>
   );
 }
