@@ -1,9 +1,22 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.github.com";
+/**
+ * Fetch GitHub users using advanced search criteria
+ * @param {Object} params
+ * @param {string} params.username
+ * @param {string} params.location
+ * @param {number} params.minRepos
+ */
+export const fetchUserData = async ({
+  username = "",
+  location = "",
+  minRepos = 0,
+}) => {
+  let query = "";
 
-export const fetchUserData = async (username, location = "", minRepos = "") => {
-  let query = username;
+  if (username) {
+    query += `${username}`;
+  }
 
   if (location) {
     query += `+location:${location}`;
@@ -13,7 +26,9 @@ export const fetchUserData = async (username, location = "", minRepos = "") => {
     query += `+repos:>=${minRepos}`;
   }
 
-  const response = await axios.get(`${BASE_URL}/search/users?q=${query}`);
+  const url = `https://api.github.com/search/users?q=${query}`;
 
-  return response.data.items;
+  const response = await axios.get(url);
+
+  return response.data;
 };
