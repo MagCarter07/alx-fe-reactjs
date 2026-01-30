@@ -2,7 +2,7 @@ import Search from "./components/Search";
 
 function App() {
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100">
       <Search />
     </div>
   );
