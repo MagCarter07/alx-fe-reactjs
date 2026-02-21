@@ -9,15 +9,15 @@ function RegistrationForm() {
   const validate = () => {
     let newErrors = {};
 
-    if (!username.trim()) {
+    if (!username) {
       newErrors.username = "Username is required";
     }
 
-    if (!email.trim()) {
+    if (!email) {
       newErrors.email = "Email is required";
     }
 
-    if (!password.trim()) {
+    if (!password) {
       newErrors.password = "Password is required";
     }
 
@@ -31,14 +31,7 @@ function RegistrationForm() {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      console.log("User Registered:", {
-        username,
-        email,
-        password,
-      });
-
       alert("Registration successful!");
-
       setUsername("");
       setEmail("");
       setPassword("");
@@ -46,46 +39,60 @@ function RegistrationForm() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "40px auto" }}>
-      <h2>User Registration (Controlled)</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold text-center mb-6 text-blue-600">
+          Controlled Registration
+        </h2>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username</label>
-          <br />
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block mb-1 font-medium">Username</label>
+            <input
+              type="text"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            {errors.username && (
+              <p className="text-red-500 text-sm mt-1">{errors.username}</p>
+            )}
+          </div>
 
-        <div>
-          <label>Email</label>
-          <br />
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
-        </div>
+          <div>
+            <label className="block mb-1 font-medium">Email</label>
+            <input
+              type="email"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
+          </div>
 
-        <div>
-          <label>Password</label>
-          <br />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
-        </div>
+          <div>
+            <label className="block mb-1 font-medium">Password</label>
+            <input
+              type="password"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+            )}
+          </div>
 
-        <br />
-        <button type="submit">Register</button>
-      </form>
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+          >
+            Register
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
