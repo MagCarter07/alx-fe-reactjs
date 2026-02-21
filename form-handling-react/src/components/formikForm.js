@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-function FormikForm() {
+function formikForm() {
   const initialValues = {
     username: "",
     email: "",
@@ -91,4 +91,4 @@ function FormikForm() {
   );
 }
 
-export default FormikForm;
+export default formikForm;
