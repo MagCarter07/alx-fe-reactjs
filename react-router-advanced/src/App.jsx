@@ -3,10 +3,10 @@ import { useState } from "react";
 
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Home from "./pages/Home";
+import Home from "./components/Home";
 import Profile from "./components/Profile";
-import BlogPost from "./pages/BlogPost";
-import Login from "./pages/Login";
+import BlogPost from "./components/BlogPost";
+import Login from "./components/Login";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
